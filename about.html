@@ -24,16 +24,16 @@
 	<div id="content">
 	<h2>About RadicalPhoto</h2>
 
-	<p>Today is <span>July 17, 2015</span>. Stay tuned, we have exciting news about our company coming in a few more weeks!</p>
+	<p>Today is <span id="current_date">July 17, 2015</span>. Stay tuned, we have exciting news about our company coming in a few more weeks!</p>
 
 	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
 
 	<h3>Our Team</h3>
 
 	<p id="bios">
-		<a href="sheila.html">Sheila</a> (President) | 
-		<a href="frank.html">Frank</a> (Vice President) | 
-		<a href="joanne.html">Joanne</a> (Senior Photographer)
+		<a id="sheila" href="sheila.html">Sheila</a> (President) | 
+		<a id="frank"  href="frank.html">Frank</a> (Vice President) | 
+		<a id="joanne" href="joanne.html">Joanne</a> (Senior Photographer)
 	</p> 
 
 	<div id="bio"></div>
@@ -45,6 +45,33 @@
 	</div>
 
 </div>
-
+    <script>
+        var currentDate = document.getElementById('current_date');
+        var today = new Date();//document.getElementById('today');
+        var dd = today.getDate();
+        var mm = today.getMonth();
+        var yyyy = today.getFullYear();
+        var month = ['Jan', 'feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        
+        currentDate.innerHTML = month[mm] + ' ' + dd + ', ' + yyyy;
+        
+        var sheila = document.getElementById('sheila');
+        var frank = document.getElementById('frank');
+        var joanne = document.getElementById('joanne');
+        var bio = document.getElementById('bio');
+        var img = document.createElement('img');
+        bio.appendChild(img);
+        
+        
+        sheila.onmouseover = function (){
+            img.src = 'images/bio1.jpg';
+        }        
+        frank.onmouseover = function (){
+            img.src = 'images/bio3.jpg';
+        }        
+        joanne.onmouseover = function (){
+            img.src = 'images/bio2.jpg';
+        }
+    </script>
 </body>
 </html>

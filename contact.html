@@ -28,12 +28,15 @@
 
 	<form action="http://derekallard.com/echo.php" method="post" id="myform">
 
-		<p class="errors">All fields are required.</p>
+		<p id="errors" class="errors">All fields are required.</p>
 
-		<p><label>Name: <input type="text" size="25" name="name" id="username"></label></p>
-		<p><label>Email: <input type="text" size="25" name="email" id="email"></label></p>
-		<p><label>Message:<br> <textarea cols="50" rows="5" name="message" id="my_message"></textarea></label></p>
-		<p><input type="submit" value="Contact Us"></p>
+        <p><label id="name_label" for="username">Name: <input type="text" size="25" name="name" id="username"></label> <small id="name_empty" class="errors">&nbsp;&#42;Your name is important for us!</small></p>
+    
+		<p><label id="email_label" for="email">Email: <input type="text" size="25" name="email" id="email"></label><small class="errors" id="email_empty">&nbsp;&#42;Please, enter your email</small></p>
+    
+		<p><label id="message_label" for="message">Message:<br> <textarea cols="50" rows="5" name="message" id="message"></textarea><small class="errors" id="message_empty">&nbsp;&#42;What was your message, again? </small></label></p>
+    
+		<p><input type="submit" value="Contact Us" id="submit_btn"></p>
 	</form>
 
 	</div>
@@ -43,6 +46,64 @@
 	</div>
 
 </div>
+<script>
+        var myForm = document.getElementById('myform');        
+        var submitBtn = document.getElementById('submit_btn');
+        var thename = document.getElementById('username');
+        var theemail = document.getElementById('email');
+        var themessage = document.getElementById('message');
+        var warning = document.getElementById('errors');
+        var name_warning = document.getElementById('name_empty');
+        var email_warning = document.getElementById('email_empty');
+        var message_warning = document.getElementById('message_empty');
+    
+        myForm.onsubmit = function(){
+           var errors = 0;
+           var userName = thename.value;
+           var userEmail = theemail.value;
+           var userMessage = themessage.value;
+                      
+           if(userName == ''){
+                thename.style.border = '1px solid #C00';
+                thename.style.boxShadow = '0 0 5px #C00';
+                name_warning.style.display = 'initial';
 
+                errors++;
+           } else {
+                thename.style.border = '1px solid #449D44';
+                thename.style.boxShadow = 'none';
+                name_warning.style.display = 'none';
+           }
+           
+           if(userEmail == ''){
+                theemail.style.border = '1px solid #C00';
+                theemail.style.boxShadow = '0 0 5px #C00';
+                email_warning.style.display = 'initial';
+               
+               errors++;
+           } else {                
+                theemail.style.border = '1px solid #449D44';
+                theemail.style.boxShadow = 'none';
+                email_warning.style.display = 'none';
+                
+           }
+           
+           if(userMessage == ''){
+                themessage.style.border = '1px solid #C00';
+                themessage.style.boxShadow = '0 0 5px #C00';
+                message_warning.style.display = 'initial';
+               errors++;
+           } else {  
+                themessage.style.border = '1px solid #449D44';
+                themessage.style.boxShadow = 'none';
+                message_warning.style.display = 'none';               
+           }
+           
+           if(errors > 0){
+              return false; 
+           }
+          
+       }    
+</script>
 </body>
 </html>

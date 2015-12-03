@@ -2,7 +2,7 @@
 	font-weight: bold;
 }
 
-#gallery a:hover img {
+#gallery a:  img {
 	opacity: .8;
 }
 
@@ -25,6 +25,9 @@
 	font-weight: bold;
 	color: #CC0000; /* darkish red */
 	display: none;
+}
+#name_empty, #email_empty, #message_empty {
+    display: none;
 }
 
 body {
